@@ -46,6 +46,7 @@ const DECLINE_EVAL_CODE_EXECUTION = 'decline-eval-code-execution';
 const ZERO_WIDTH_SPACE_CHAR_CODE = 8203;
 
 const inviteLink = "https://discord.com/oauth2/authorize?client_id=1097935736289894480&scope=bot&permissions=8";
+const supportLink = "https://discord.gg/KV7dfama9B";
 
 module.exports = {
   EMBED_MAX_FIELDS_LENGTH,
@@ -90,5 +91,6 @@ module.exports = {
 
   ZERO_WIDTH_SPACE_CHAR_CODE,
 
-  inviteLink
+  inviteLink,
+  supportLink
 };
