@@ -5,6 +5,8 @@ const { readdirSync } = require("fs")
 const moment = require("moment");
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v10');
+//const logger = require("./src/logger").logger;
+const sdeparser = require('./src/sdeparser');
 
 let token = config.token
 
@@ -46,7 +48,10 @@ client.on("ready", async () => {
         } catch (error) {
             console.error(error);
         }
-    log(`${client.user.username} Client is active!`);
+    
+    // Init YAML parser
+    //sdeparser.parse();
+    log(`\n${client.user.username} has started, and is ready to show some damn good data.`);
 })
 
 //event-handler
