@@ -102,7 +102,7 @@ module.exports = {
                 text: 'Made with ❤️ by Szymi#9690',
             },
         };
-        interaction.reply({ embeds: [statsEmbed] });
+        interaction.editReply({ embeds: [statsEmbed] });
 
     }
 };
