@@ -43,15 +43,15 @@ exports.parse = function () {
     const categoryIdPath = sdePath + 'fsd/categoryIDs.yaml';
     const chrRacePath = sdePath + 'fsd/races.yaml';
 
-    const eveUnitPath = sdePath + 'bsd/eveUnits.yaml';
+    const eveUnitPath = sdePath + 'bsd/dogmaUnits.yaml';
 
-    const dgmAttributeTypePath = sdePath + 'bsd/dgmAttributeTypes.yaml';
-    const dgmTypeAttributePath = sdePath + 'bsd/dgmTypeAttributes.yaml';
+    const dgmAttributeTypePath = sdePath + 'fsd/dogmaAttributes.yaml';
+    const dgmTypeAttributePath = sdePath + 'fsd/TypeDogma.yaml';
 
     const iconIDPath = sdePath + 'fsd/iconIDs.yaml';
 
-    const industryActivityProductsPath = sdePath + 'bsd/industryActivityProducts.yaml';
-    const industryActivityPath = sdePath + 'bsd/industryActivity.yaml';
+    //const industryActivityProductsPath = sdePath + 'bsd/industryActivityProducts.yaml';
+    //const industryActivityPath = sdePath + 'bsd/industryActivity.yaml';
 
 
     try {
@@ -67,7 +67,7 @@ exports.parse = function () {
         
         // Load units
 
-        const eveUnits = yaml.safeLoad(fs.readFileSync(eveUnitPath, 'utf8'));
+        const eveUnits = yaml.load(fs.readFileSync(eveUnitPath, 'utf8'));
         let units = [];
         for (let currUnit in eveUnits) {
             units[eveUnits[currUnit].unitID] = eveUnits[currUnit];
@@ -75,21 +75,21 @@ exports.parse = function () {
 
         // Load Item Attributes
 
-        const dgmAttributeTypes = yaml.safeLoad(fs.readFileSync(dgmAttributeTypePath, 'utf8'));
+        const dgmAttributeTypes = yaml.load(fs.readFileSync(dgmAttributeTypePath, 'utf8'));
         let attributeTypes = [];
         for (let currAttributeTypes in dgmAttributeTypes) {
             attributeTypes[dgmAttributeTypes[currAttributeTypes].attributeID] = dgmAttributeTypes[currAttributeTypes];
         }
-        const dgmTypeAttributes = yaml.safeLoad(fs.readFileSync(dgmTypeAttributePath, 'utf8'));
+        const dgmTypeAttributes = yaml.load(fs.readFileSync(dgmTypeAttributePath, 'utf8'));
 
 
         // Load Icons
 
-        const iconIDs = yaml.safeLoad(fs.readFileSync(iconIDPath, 'utf8'));
+        const iconIDs = yaml.load(fs.readFileSync(iconIDPath, 'utf8'));
 
         // Load Blueprints
         const blueprintsPath = sdePath + 'fsd/blueprints.yaml';
-        var blueprints = yaml.safeLoad(fs.readFileSync(blueprintsPath, 'utf8'));
+        var blueprints = yaml.load(fs.readFileSync(blueprintsPath, 'utf8'));
 
 
         // Import Items (Only ships catID=6)
@@ -97,9 +97,9 @@ exports.parse = function () {
         const shipCatID = 6;
         const moduleCatID = 7;
         const blueprintCatID = 9;
-        const typeIDs = yaml.safeLoad(fs.readFileSync(typeIdPath, 'utf8'));
-        const groupIDs = yaml.safeLoad(fs.readFileSync(groupIdPath, 'utf8'));
-        const categoryIDs = yaml.safeLoad(fs.readFileSync(categoryIdPath, 'utf8'));
+        const typeIDs = yaml.load(fs.readFileSync(typeIdPath, 'utf8'));
+        const groupIDs = yaml.load(fs.readFileSync(groupIdPath, 'utf8'));
+        const categoryIDs = yaml.load(fs.readFileSync(categoryIdPath, 'utf8'));
 
         for (const typID in typeIDs) {
 
@@ -134,7 +134,7 @@ exports.parse = function () {
                                         currType.traits.types[skillBonus][bonusId].bonusText.en = striptags(currType.traits.types[skillBonus][bonusId].bonusText.en);
                                         currType.traits.types[skillBonus][bonusId].skill = skillBonusName;
                                         if (currType.traits.types[skillBonus][bonusId].unitID) {
-                                            currType.traits.types[skillBonus][bonusId].unit = units[currType.traits.types[skillBonus][bonusId].unitID].displayName;
+                                            currType.traits.types[skillBonus][bonusId].unit = units[currType.traits.types[skillBonus][bonusId].unitID].name;
                                         }
                                     }
                                 }

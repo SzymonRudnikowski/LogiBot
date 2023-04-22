@@ -5,8 +5,7 @@ const { readdirSync } = require("fs")
 const moment = require("moment");
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v10');
-//const logger = require("./src/logger").logger;
-const sdeparser = require('./src/sdeparser');
+//const sdeparser = require('./src/sdeparser');
 
 let token = config.token
 
@@ -51,6 +50,7 @@ client.on("ready", async () => {
     
     // Init YAML parser
     //sdeparser.parse();
+    ssoapi.sso();
     log(`\n${client.user.username} has started, and is ready to show some damn good data.`);
 })
 
